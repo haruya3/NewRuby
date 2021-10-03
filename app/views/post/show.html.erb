@@ -1,0 +1,35 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <div class="post-user-name">
+        <% if @post.user.user_image? %>
+          <%= link_to image_tag("#{@post.user.user_image}", class: "user-icon" ), user_path(@post.user) %>  
+        <% else %>
+          <%= link_to image_tag("/default.png", class: "user-icon" ), user_path(@post.user) %>
+        <% end %>
+        <%= link_to(@post.user.username, user_path(@post.user)) %>
+      </div>
+      <div class="post-item">
+        <p>
+            <%= @post.content %>
+        </p>
+        <img src="<%= "#{@post.post_image}"%>">
+        <p class="title">
+            <%= @post.title %>
+        </p>
+      </div>
+      <div class="post-time">
+        <%= @post.created_at %>
+      </div>
+     
+      
+      
+      <% if @post.user_id == current_user.id %>
+        <div class="post-menus">
+          <%= link_to("編集", post_path(@post)) %>
+          <%= link_to("削除", post_path(@post), {method: "post"}) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
