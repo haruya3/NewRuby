@@ -1,8 +1,20 @@
-<div class="main posts-index">
+<div class="main user-show">
   <div class="container">
-    <% @posts.each do |post| %>
+    <div class="user">
+      <img src="<%= "#{@user.user_image}" %>">
+      <h2><%= @user.username %></h2>
+      <% if @user.id == current_user.id %>
+        <%= link_to("編集",user_path(@user)) %>
+      <% end %>
+    </div>
+    
+    <ul class="user-tabs">
+      <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+    
+    <% @user.posts.each do |post| %>
       <div class="posts-index-item">
-        <%= link_to "", post_path(post), class: "hidden-link"%>
         <div class="post-up">
         <% if post.user.user_image? %>
           <%= link_to image_tag("#{post.user.user_image}", class: "user-icon" ), user_path(post.user) %>  
