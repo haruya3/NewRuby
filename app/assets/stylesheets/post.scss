@@ -1,0 +1,26 @@
+// Place all the styles related to the post controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.posts-index-item{
+  padding: 20px 30px;
+  background-color: rgb(250, 244, 244);
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.user-icon {
+    width: 50px;
+    height: 50px;
+    //サイズ指定
+    border-radius: 30px;
+    //画像を丸くする
+    object-fit: cover;
+    //タテヨコ比を変えないままトリミング
+}
+
+.icon{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+
+}
