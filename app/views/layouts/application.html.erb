@@ -11,11 +11,40 @@
   </head>
 
   <body>
-  <header>
-  <%= link_to "投稿", new_post_path %>
-  <%= link_to "投稿一覧", post_index_path %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </header>
+  <div class="header-logo">
+        <% if user_signed_in?	%>
+          <%= link_to("Spot", post_index_path) %>
+        <% else %>
+          <%= link_to("Spot", root_path) %>
+        <% end %>
+      </div>
+      <ul class="header-menus">
+        <% if user_signed_in?	 %>
+          <li>
+            <%= link_to current_user.username, user_path(current_user) %>
+          </li>
+          <li>
+            <%= link_to "投稿一覧", post_index_path %>
+          </li>
+          <li>
+            <%= link_to "新規投稿", new_post_path %>
+          </li>
+          <li>
+            <%= link_to "ユーザー一覧", user_index_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "新規登録", new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to("ログイン", new_user_session_path) %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
   <% if :notice || :alert%>
    <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>

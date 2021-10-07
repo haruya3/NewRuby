@@ -66,3 +66,6 @@ gem "omniauth-rails_csrf_protection"
  gem 'carrierwave'
 
  gem 'rails-i18n'
+
+ gem 'pry-rails'
+
