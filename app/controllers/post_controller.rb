@@ -1,7 +1,6 @@
 class PostController < ApplicationController
-    before_action :post_params
     before_action :post_get, only: [:edit, :show, :update, :destroy]
-    before_action :autheticate_partial_user, only: [:edit, :show, :update, :destroy]
+    before_action :autheticate_partial_user, only: [:edit, :show, :destroy]
 
     def index
         @posts = Post.all.order(created_at: :desc)
@@ -14,15 +13,16 @@ class PostController < ApplicationController
     def create
         @post = Post.new(post_params)
         if @post.save
-            flash[:notice] = "投稿を作成しました"
+            flash[:notice] = "投稿ができました"
             redirect_to post_index_path
           else
+            flash[:alert] = "投稿に失敗しました"
             render :new 
         end
     end
 
     def edit
-
+        
     end
 
     def show
@@ -30,21 +30,35 @@ class PostController < ApplicationController
     end
 
     def update
-
+        if @post.update!(post_params)
+            flash[:notice] = "更新できました"
+            redirect_to post_path(@post)
+        else
+            flash[:alert] = "更新に失敗しました"
+            render :edit
+        end
     end 
 
     def destroy
-
+        if @post.destroy
+            flash[:notice] = "削除ができました"
+            redirect_to post_index_path 
+          else
+            flash[:alert] =  "削除に失敗しました"
+            render post_path(@post)
+        end
     end
 
     private
-    def post_params
-        params.permit(:content, :title, :post_image, :user_id, janle: [])
+    
+    def post_get
+        @post = Post.find_by(id: params[:id])
     end
 
-    def post_get
-        @post = Post.find_by(user_id: current_user.id)
+    def post_params
+        params.require(:post).permit(:content, :title, :post_image, :user_id, janle: [])
     end
+
 
     def autheticate_partial_user
         if @post.user_id != current_user.id

@@ -23,13 +23,13 @@
       </div>
      
       
-      
-      <% if @post.user_id == current_user.id %>
+      <% if @post.user_id == current_user.id%>
         <div class="post-menus">
-          <%= link_to("編集", post_path(@post)) %>
-          <%= link_to("削除", post_path(@post), {method: "post"}) %>
+          <%= link_to "編集", edit_post_path(@post) %>
+          <%= link_to "削除", post_path(@post), method: :delete %>
         </div>
       <% end %>
+
     </div>
   </div>
 </div>

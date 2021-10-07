@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集する</h1>
+    <%= form_for(@post, url: {controller: 'post', action: 'update' }) do |f| %>
+      <div class="form">
+        <div class="form-body">
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <p>タイトル</p>
+          <%= f.text_field :title, class: "post-title", size: 30, value: @post.title %>
+          <p>内容</p>
+          <%= f.text_area :content, class: "post-content    ", size: "30x10", value: @post.content %>
+          <p>画像</p>
+          <img src="<%="#{@post.post_image}" %>", class="icon">
+          <%= f.label :post_image, class: "fa fa-file-picture-o fa-2x" do %><br/> 
+          <%= f.file_field :post_image, style: "display: none;", accept: 'image/jpeg,image/gif,image/png' %>
+          <% end %>
+        　<p>ジャンル選択</p>
+        　<p>遊び: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "遊び" %></p>
+　　　　　<p>デート: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "デート" %></p>
+          <p>ドライブ: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "ドライブ" %></p>
+          <p>映えスポット: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "家族" %></p>
+          <%= f.hidden_field :user_id, value: @post.user_id %>
+          <%= f.submit "更新" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

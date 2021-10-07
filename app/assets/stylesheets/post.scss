@@ -19,7 +19,7 @@
 
 .posts-show-item {
   padding: 30px;
-  background-color: white;
+  background-color: rgb(250, 244, 244);
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
 }
@@ -92,4 +92,9 @@
 .hidden-link{
   display: block;
   width: 100%;
+}
+
+.fa{
+   color: #ff2581;
+   
 }
