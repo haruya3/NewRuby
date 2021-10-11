@@ -1,24 +1,47 @@
 <div class="main posts-index">
   <div class="container">
-    <% @posts.each do |post| %>
-      <div class="posts-index-item">
-        <%= link_to "", post_path(post), class: "hidden-link"%>
-        <div class="post-up">
-        <% if post.user.user_image? %>
-          <%= link_to image_tag("#{post.user.user_image}", class: "user-icon" ), user_path(post.user) %>  
-        <% else %>
-          <%= link_to image_tag("/default.png", class: "user-icon" ), user_path(post.user) %>
-        <% end %>
-        <%= link_to(post.user.username, user_path(post.user)) %>
-        </div>
-        <div class="post-down">
-        <%= link_to post.content, post_path(post) %>
-        <div class="post-image">
-          <img src="<%= "#{post.post_image}" %>" class="icon">
-        </div>
-        <p class="title"><%= post.title %></p>
-        </div>
-      </div> 
-    <% end %>
+    <ul class="tab-list list-unstyled">
+      <li class="tab tab-active">
+        全般
+      </li>
+      <li class="tab">
+        遊び
+      </li>
+      <li class="tab">
+        デート
+      </li>
+      <li class="tab">
+        ドライブ
+      </li>
+      <li class="tab">
+        インスタ映え
+      </li>
+      <li class="tab">
+        その他
+      </li>
+    </ul>
+    <!--タブで選択された要素部分-->
+    <div class="tabbox-contents">
+      <div class="tabbox box-show">
+        <%= render 'list', posts: @posts %>    
+      </div>
+      <div class="tabbox">
+        <%= render 'list', posts: Post.return_posts('遊び') %>
+      </div>
+      <div class="tabbox">
+        <%= render 'list', posts: Post.return_posts('デート') %>
+      </div>
+      <div class="tabbox">
+        <%= render 'list', posts: Post.return_posts('ドライブ') %>
+      </div>
+      <div class="tabbox">
+        <%= render 'list', posts: Post.return_posts('インスタ映え') %>
+      </div>
+      <div class="tabbox">
+        <%= render 'list', posts: Post.return_posts('その他') %>
+      </div>
+    </div>
+
+      
   </div>
 </div>

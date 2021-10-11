@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Janle.create([
+    { janle: '遊び' },
+    { janle: 'デート' },
+    { janle: 'ドライブ'},
+    { janle: 'インスタ映え'},
+    { janle: 'その他'}
+    ])

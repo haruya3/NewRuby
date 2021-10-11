@@ -21,6 +21,12 @@
       <div class="post-time">
         <%= @post.created_at %>
       </div>
+
+      <div class="tag">
+       <% @post.janles.each do |janle|%>
+          <p class="janle"><%= "##{janle.janle}"%></p>
+        <% end %>
+      </div>
      
       
       <% if @post.user_id == current_user.id%>

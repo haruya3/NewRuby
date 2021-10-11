@@ -3,6 +3,7 @@ class PostController < ApplicationController
     before_action :autheticate_partial_user, only: [:edit, :show, :destroy]
 
     def index
+        @janles = Janle.all
         @posts = Post.all.order(created_at: :desc)
     end
 
@@ -12,7 +13,9 @@ class PostController < ApplicationController
 
     def create
         @post = Post.new(post_params)
+        janle_list = params[:post][:janle]
         if @post.save
+            @post.save_janle(janle_list)
             flash[:notice] = "投稿ができました"
             redirect_to post_index_path
           else
@@ -30,7 +33,9 @@ class PostController < ApplicationController
     end
 
     def update
+        janle_list = params[:post][:janle]
         if @post.update!(post_params)
+            @post.save_janle(janle_list)
             flash[:notice] = "更新できました"
             redirect_to post_path(@post)
         else
@@ -56,7 +61,7 @@ class PostController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:content, :title, :post_image, :user_id, janle: [])
+        params.require(:post).permit(:content, :title, :post_image, :user_id)
     end
 
 
