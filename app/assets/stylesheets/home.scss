@@ -90,3 +90,41 @@ header {
   font-size: 14px;
 }
 
+// タブ切り替え
+.tab {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  cursor: pointer;
+  border: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+
+.tab_list li{
+  float: left;
+}
+.tab:first-child {
+  border-left: none;
+}
+// タブがactiveのときのデザイン
+.tab-active {
+  color: #FFF;
+  background: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+// タブの中身、最初は非表示
+.tabbox {
+  clear: both;
+  display: none;
+  padding: 15px;
+}
+// box-showクラスのものだけ表示
+.box-show {
+  display: block;
+}
+// hover時のアクション
+.tab:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
