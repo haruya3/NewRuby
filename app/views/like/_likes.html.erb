@@ -1,0 +1,11 @@
+<% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
+  <%= link_to "/posts/#{post.id}/likes", method: :delete, remote: true do %>
+    <i class="fa-duotone fa-heart"></i>
+  <% end %>
+  <p class="like-count"><%= post.likes.count %> いいね</p>
+<% else %>
+  <%= link_to "/posts/#{post.id}/likes", method: :post, remote: true do %>
+    <i class="fa-regular fa-heart"></i>  
+    <%= post.likes.count %> いいね
+  <% end %>
+<% end %>

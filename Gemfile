@@ -61,11 +61,10 @@ gem "omniauth-rails_csrf_protection"
 
  gem 'dotenv-rails', require: 'dotenv/rails-now'
 
- gem 'font-awesome-rails' ##これは最新のFont Awesomeが使えない
-
  gem 'carrierwave'
 
  gem 'rails-i18n'
 
  gem 'pry-rails'
 
+ gem 'font-awesome-sass'

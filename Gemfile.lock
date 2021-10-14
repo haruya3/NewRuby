@@ -119,8 +119,8 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     ffi (1.15.4-x64-mingw32)
-    font-awesome-rails (4.7.0.7)
-      railties (>= 3.2, < 7)
+    font-awesome-sass (5.15.1)
+      sassc (>= 1.11)
     globalid (0.5.2)
       activesupport (>= 5.0)
     hashie (4.1.0)
@@ -289,7 +289,7 @@ DEPENDENCIES
   carrierwave
   devise
   dotenv-rails
-  font-awesome-rails
+  font-awesome-sass
   jbuilder (~> 2.7)
   omniauth
   omniauth-facebook

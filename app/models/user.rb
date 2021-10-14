@@ -3,7 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
+  
   has_many :posts
+
+  has_many :likes
+  has_many :post_likes, through: :likes, source: :post
 
   mount_uploader :user_image, ImageUploader
 

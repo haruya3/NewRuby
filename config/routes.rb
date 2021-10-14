@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   }
 
   resources :user
-  resources :post
+  resources :post 
+  post '/posts/:post_id/likes' => 'like#create' 
+  delete '/posts/:post_id/likes' => 'like#destroy' 
+
 
 
   root 'home#top'
