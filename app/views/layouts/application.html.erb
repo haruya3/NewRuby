@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <%= javascript_pack_tag 'application' %>
@@ -29,9 +28,6 @@
           </li>
           <li>
             <%= link_to "新規投稿", new_post_path %>
-          </li>
-          <li>
-            <%= link_to "ユーザー一覧", user_index_path %>
           </li>
           <li>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

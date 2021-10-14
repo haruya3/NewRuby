@@ -94,15 +94,21 @@ header {
 .tab {
   float: left;
   width: 25%;
-  padding: 10px;
+  padding: 10px 20px; 
   cursor: pointer;
   border: solid 1px #CCC;
   border-bottom: solid 1px #CCC;
 }
 
+
 .tab_list li{
   float: left;
 }
+
+.tab-header{
+  margin-left: 20px;
+}
+
 .tab:first-child {
   border-left: none;
 }

@@ -1,6 +1,8 @@
 // Place all the styles related to the post controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
 .posts-index-item{
   padding: 20px 30px;
   background-color: rgb(250, 244, 244);
@@ -47,6 +49,10 @@
 
 .post-item .janle{
   font-size: 10px;
+}
+
+.like-count{
+  
 }
 .posts-show-item .post-user-name a {
   vertical-align: middle;
@@ -119,4 +125,13 @@
 .fa{
    color: #ff2581;
    
+}
+
+.fa-heart{
+  float: left;
+  width: 1px;
+}
+
+.fa-duotone{
+  color: #ff2581;
 }

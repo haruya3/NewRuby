@@ -12,12 +12,15 @@
     <div class="post-down">
       <%= link_to post.content, post_path(post) %>
         <div class="post-image">
-          <img src="<%= "#{post.post_image}" %>" class="icon">
+          <%= link_to image_tag("#{post.post_image}", class: "icon" ), post_path(post) %>
         </div>
       <p class="title"><%= post.title %></p>
         <% post.janles.each do |janle|%>
           <p class="janle"><%= "##{janle.janle}"%></p>
         <% end %>
+        <div id="like_buttons_<%= post.id %>">
+        <%= render partial: 'like/likes', locals: {post: post} %>
+        </div>
     </div>
   </div> 
 <% end %>

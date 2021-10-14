@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_07_081110) do
+ActiveRecord::Schema.define(version: 2021_10_13_123438) do
 
   create_table "janles", force: :cascade do |t|
     t.string "janle"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "post_janles", force: :cascade do |t|
@@ -54,6 +63,8 @@ ActiveRecord::Schema.define(version: 2021_10_07_081110) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "likes", "posts", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "likes", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "post_janles", "janles", on_update: :cascade, on_delete: :cascade
   add_foreign_key "post_janles", "posts", on_update: :cascade, on_delete: :cascade
   add_foreign_key "posts", "users", on_update: :cascade, on_delete: :cascade
