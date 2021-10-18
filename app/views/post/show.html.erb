@@ -27,6 +27,10 @@
           <p class="janle"><%= "##{janle.janle}"%></p>
         <% end %>
       </div>
+
+      <div id="like_buttons_<%= @post.id %>">
+        <%= render partial: 'like/likes', locals: {post: @post} %>
+      </div>
      
       
       <% if @post.user_id == current_user.id%>
