@@ -1,10 +1,16 @@
 <div class="main user-show">
   <div class="container">
     <div class="user">
-      <img src="<%= "#{@user.user_image}" %>">
+      <% if @user.user_image? %>
+        <img src="<%= "#{@user.user_image}" %>" class="user-img">  
+      <% else %>
+        <img src="/default.png" class="user-img">
+      <% end %>
       <h2><%= @user.username %></h2>
       <% if @user.id == current_user.id %>
-        <%= link_to("編集",user_path(@user)) %>
+        <%= link_to user_path(@user) do %>
+          <i class="fas fa-edit fa-2x"></i>
+        <% end %>
       <% end %>
     </div>
     
@@ -21,7 +27,7 @@
           <% else %>
             <%= link_to image_tag("/default.png", class: "user-icon" ), user_path(post.user) %>
           <% end %>
-          <%= link_to(post.user.username, user_path(post.user)) %>
+          <p><%= link_to(post.user.username, user_path(post.user)) %></p>
         </div>
         <div class="post-down">
           <%= link_to post.content, post_path(post) %>

@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
 <div class="main posts-new">
   <div class="container">
     <h1 class="form-heading">編集する</h1>
@@ -14,8 +17,8 @@
           <p>内容</p>
           <%= f.text_area :content, class: "post-content    ", size: "30x10", value: @post.content %>
           <p>画像</p>
-          <img src="<%="#{@post.post_image}" %>", class="icon">
-          <%= f.label :post_image, class: "fa fa-file-picture-o fa-2x" do %><br/> 
+          <img src="<%="#{@post.post_image}" %>", class="icon"><br/>
+          <%= f.label :post_image, class: "fa fa-file-picture-o fa-2x" do %> <br/>
           <%= f.file_field :post_image, style: "display: none;", accept: 'image/jpeg,image/gif,image/png' %>
           <% end %>
         　<p>ジャンル選択</p>
