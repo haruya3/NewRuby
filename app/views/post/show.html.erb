@@ -35,8 +35,12 @@
       
       <% if @post.user_id == current_user.id%>
         <div class="post-menus">
-          <%= link_to "編集", edit_post_path(@post) %>
-          <%= link_to "削除", post_path(@post), method: :delete %>
+          <%= link_to edit_post_path(@post) do %>
+            <i class="fas fa-edit fa-2x"></i>
+          <% end %>
+          <%= link_to post_path(@post), method: :delete do %>
+            <i class="fas fa-trash-alt fa-2x"></i>
+          <% end %>
         </div>
       <% end %>
 
