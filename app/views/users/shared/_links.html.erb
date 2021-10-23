@@ -5,16 +5,18 @@
 
   </head>
   <body>
-    <%- if controller_name != 'sessions' %>
-      <%= link_to "Log in", new_session_path(resource_name) %><br />
-    <% end %>
+    <div class="log-in">
+      <%- if controller_name != 'sessions' %>
+        <%= link_to "ログイン", new_session_path(resource_name) %><br />
+      <% end %>
+    </div>
 
     <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+      <%= link_to "新規登録", new_registration_path(resource_name) %><br />
     <% end %>
 
     <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-      <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+      <%= link_to "パスワードをお忘れですか?", new_password_path(resource_name) %><br />
     <% end %>
 
     <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
@@ -29,7 +31,7 @@
       <%- resource_class.omniauth_providers.each do |provider| %>
         <%= link_to  omniauth_authorize_path(resource_name, provider), method: :post do %> 
         <div class="facebook-btn">
-        <span class="fa fa-facebook "></span><%= "Sign in with #{OmniAuth::Utils.camelize(provider)}" %><br />
+        <span class="fa fa-facebook "></span><%= "#{OmniAuth::Utils.camelize(provider)}でサイイン" %><br />
         </div>
         <% end %>
       <% end %>

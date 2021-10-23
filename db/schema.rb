@@ -55,8 +55,6 @@ ActiveRecord::Schema.define(version: 2021_10_13_123438) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "uid"
-    t.string "provider"
     t.string "user_image"
     t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
