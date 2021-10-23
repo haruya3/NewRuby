@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+*Webpacker::Manifest::MissingEntryErrorがでた時の対処法
+以下のコマンドをSpot下で実行してください。 
+rails webpacker:install
+rails webpacker:compile
+
