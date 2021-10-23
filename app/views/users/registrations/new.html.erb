@@ -1,36 +1,38 @@
-<h2>Sign up</h2>
+<div class="main registration-new">
+  <div class="container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字最低必要)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+      <div class="field">
+        <%= f.label :image, class: "fa fa-file-picture-o fa-2x" do %><br/>
+        <%= f.file_field :image, style: "display:none;" %>
+        <% end %>
+      </div>
+      <div class="field">
+        <%= f.label :ユーザ名 %><br/>
+        <%= f.text_field :username %>
+      </div>
+      <div class="actions">
+        <%= f.submit "登録" %>
+      </div>
+    <% end %>
+    <%= render "users/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br/>
-    <%= f.file_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br/>
-    <%= f.text_field :username %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

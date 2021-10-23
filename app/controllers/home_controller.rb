@@ -6,3 +6,5 @@ class HomeController < ApplicationController
     def priporicy
     end
 end
+
+  
