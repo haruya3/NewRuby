@@ -1,26 +1,26 @@
 <% posts.each do |post| %>
   <div class="posts-index-item">
     <%= link_to "", post_path(post), class: "hidden-link"%>
-      <div class="post-up">
-        <% if post.user.user_image? %>
-          <%= link_to image_tag("#{post.user.user_image}", class: "user-icon" ), user_path(post.user) %>  
-        <% else %>
-          <%= link_to image_tag("/default.png", class: "user-icon" ), user_path(post.user) %>
-        <% end %>
-        <%= link_to(post.user.username, user_path(post.user)) %>
-      </div>
+    <div class="post-up">
+      <% if post.user.user_image? %>
+        <%= link_to image_tag("#{post.user.user_image}", class: "user-icon" ), user_path(post.user) %>  
+      <% else %>
+        <%= link_to image_tag("/default.png", class: "user-icon" ), user_path(post.user) %>
+      <% end %>
+      <%= link_to(post.user.username, user_path(post.user)) %>
+    </div>
     <div class="post-down">
       <%= link_to post.content, post_path(post) %>
         <div class="post-image">
           <%= link_to image_tag("#{post.post_image}", class: "icon" ), post_path(post) %>
         </div>
       <p class="title"><%= post.title %></p>
-        <% post.janles.each do |janle|%>
-          <p class="janle"><%= "##{janle.janle}"%></p>
-        <% end %>
-        <div id="like_buttons_<%= post.id %>">
+      <% post.janles.each do |janle|%>
+        <p class="janle"><%= "##{janle.janle}"%></p>
+      <% end %>
+      <div id="like_buttons_<%= post.id %>">
         <%= render partial: 'like/likes', locals: {post: post} %>
-        </div>
+      </div>
     </div>
   </div> 
 <% end %>

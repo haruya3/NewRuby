@@ -6,7 +6,7 @@
 .registration-new input {
     border:none;
     border-radius: 10px;
-    background-color: darkgray;
+    background-color: #a9a9a9;
     padding: 2px 8px;
     width: 50%;
 }
@@ -20,6 +20,8 @@
 }
 
 
+
+
 .log-in{
     margin-top: 10px;
     background-color: aliceblue;
@@ -31,4 +33,13 @@
     margin-top: 10px;
     background-color: antiquewhite;
     border-radius: 10px;
+}
+
+.like{
+    float: left;
+}
+
+.like-count{
+    margin-bottom: 10px;
+    float: left;
 }
