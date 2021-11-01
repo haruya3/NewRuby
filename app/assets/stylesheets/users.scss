@@ -20,11 +20,10 @@
 }
 
 
-
-
 .log-in{
+    display: inline-block;
     margin-top: 10px;
-    background-color: aliceblue;
+    background-color: antiquewhite;
     border-radius: 10px;
 }
 
@@ -42,4 +41,19 @@
 .like-count{
     margin-bottom: 10px;
     float: left;
+}
+
+.user-icon {
+    width: 70px;
+    height: 70px;
+    //サイズ指定
+    border-radius: 40px;
+    //画像を丸くする
+    object-fit: cover;
+    //タテヨコ比を変えないままトリミング
+}
+
+.user-image {
+    margin-top: 10px;
+
 }

@@ -1,0 +1,29 @@
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<div class="main user-edit">
+  <div class="container">
+    <h1 class="form-heading">アカウント編集</h1>
+    <%= form_for(@user, url: {controller: 'user', action: 'update' }) do |f| %>
+      <div class="form">
+        <div class="form-body">
+          <% @user.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <p>名前</p>
+          <%= f.text_field :username, class: "user", value: @user.username %>
+          <p>画像</p>
+          <img src="<%="#{@user.user_image}" %>", class="user-icon"><br/>
+          <%= f.label :user_image, class: "user-image fa fa-file-picture-o fa-2x" do %> <br/>
+          <%= f.file_field :user_image, style: "display: none;", accept: 'image/jpeg,image/gif,image/png' %><br/>
+          <% end %>
+          <div class="user-submit">
+            <%= f.submit "更新" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
