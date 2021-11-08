@@ -24,7 +24,8 @@
         　<p>遊び: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "遊び" %></p>
 　　　　　<p>デート: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "デート" %></p>
           <p>ドライブ: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "ドライブ" %></p>
-          <p>映えスポット: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "家族" %></p>
+          <p>映えスポット: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "映えスポット" %></p>
+          <p>その他: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "その他" %></p>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.submit "投稿" %>
         </div>
