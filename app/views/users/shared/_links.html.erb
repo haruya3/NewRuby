@@ -5,20 +5,21 @@
 
   </head>
   <body>
-    <div class="log-in">
+    <div class="start log-in">
       <%- if controller_name != 'sessions' %>
         <%= link_to "ログイン", new_session_path(resource_name) %><br />
       <% end %>
     </div>
-
-    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "新規登録", new_registration_path(resource_name) %><br />
-    <% end %>
-
-    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-      <%= link_to "パスワードをお忘れですか?", new_password_path(resource_name) %><br />
-    <% end %>
-
+    <div class="start registration">
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "新規登録", new_registration_path(resource_name) %><br />
+      <% end %>
+    </div>
+    <div class="start">
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "パスワードをお忘れですか?", new_password_path(resource_name) %><br />
+      <% end %>
+    </div>
     <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
       <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
     <% end %>
@@ -30,7 +31,7 @@
     <%- if devise_mapping.omniauthable? %>
       <%- resource_class.omniauth_providers.each do |provider| %>
         <%= link_to  omniauth_authorize_path(resource_name, provider), method: :post do %> 
-        <div class="facebook-btn">
+        <div class="start facebook-btn">
         <span class="fa fa-facebook "></span><%= "#{OmniAuth::Utils.camelize(provider)}でサイイン" %><br />
         </div>
         <% end %>

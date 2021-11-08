@@ -1,6 +1,6 @@
 class PostController < ApplicationController
     before_action :post_get, only: [:edit, :show, :update, :destroy]
-    before_action :autheticate_partial_user, only: [:edit, :show, :destroy]
+    before_action :autheticate_partial_user, only: [:edit, :destroy]
 
     def index
         @janles = Janle.all
@@ -23,6 +23,8 @@ class PostController < ApplicationController
             render :new 
         end
     end
+
+    
 
     def edit
         

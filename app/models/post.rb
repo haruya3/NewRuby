@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   validates :post_image, {presence: true}
   validates :user_id, {presence: true}
 
+
   def save_janle(sent_janles)
     current_tags = self.janles.pluck(:janle) unless self.janles.nil?
     old_janles = current_tags - sent_janles
@@ -26,6 +27,8 @@ class Post < ApplicationRecord
       self.janles << new_post_tag
     end
   end
+#あくまでもself.janlesでは中間テーブルを介して結合したテーブルからjanleの方を表示している。だから、追加したら中間テーブルにも追加される。
+#self.janlesでpostに関連するjanleを配列で取得している。そこに、新たなjanleを追加することで、中間テーブルにも追加できるのかな?  
 
   def self.return_posts(janle_name)
     case janle_name
@@ -46,7 +49,7 @@ class Post < ApplicationRecord
       posts = janle.posts.order(created_at: :desc)
     end  
 
-    posts
+    return posts
   end
 
 end
