@@ -168,6 +168,7 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
+    pg (1.2.3-x64-mingw32)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -296,6 +297,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-rails_csrf_protection
+  pg
   pry-rails
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -303,7 +305,7 @@ DEPENDENCIES
   rails-i18n
   sass-rails (>= 6)
   selenium-webdriver
-  sqlite3 (~> 1.4)
+  sqlite3
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
