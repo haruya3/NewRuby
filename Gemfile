@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -68,13 +69,13 @@ gem 'omniauth-facebook'
 
 gem "omniauth-rails_csrf_protection"
 
- gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
- gem 'carrierwave'
+gem 'carrierwave'
 
- gem 'rails-i18n'
+gem 'rails-i18n'
 
- gem 'pry-rails'
+gem 'pry-rails'
 
- gem 'font-awesome-sass'
+gem 'font-awesome-sass'
 
