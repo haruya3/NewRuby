@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   mount_uploader :user_image, ImageUploader
 
-  validates :username, {presence: true, length: {maximum: 15}}
+  validates :username, {uniqueness: true, presence: true, length: {maximum: 15}}
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
