@@ -79,3 +79,4 @@ gem 'pry-rails'
 
 gem 'font-awesome-sass'
 
+gem 'fog-aws'

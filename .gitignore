@@ -42,3 +42,4 @@ yarn-debug.log*
 /config/certs/*
 !/config/certs/.keep
 #!から始まるパスってなんだ?
+/public/uploads
