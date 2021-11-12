@@ -75,6 +75,8 @@ gem 'carrierwave'
 
 gem 'rails-i18n'
 
+gem 'devise-i18n'
+
 gem 'pry-rails'
 
 gem 'font-awesome-sass'

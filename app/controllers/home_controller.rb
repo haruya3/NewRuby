@@ -5,6 +5,9 @@ class HomeController < ApplicationController
 
     def priporicy
     end
+
+    def confirmable_wait
+    end
 end
 
   
