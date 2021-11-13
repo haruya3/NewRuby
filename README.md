@@ -8,24 +8,15 @@ Things you may want to cover:
 * Ruby version
 2.7.3
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 *Webpacker::Manifest::MissingEntryErrorがでた時の対処法
-以下のコマンドをSpot下で実行してください。 
+以下のコマンドをSpotディレクリ下で実行してください。 
+
 rails webpacker:install
 rails webpacker:compile
+
 また、上記の方法で解決しない場合はnode.jsのバージョンが合っていない場合があります。
+*node version
+14.17.3
+
+*yarn version
+1.22.10
