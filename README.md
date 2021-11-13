@@ -8,6 +8,8 @@ Things you may want to cover:
 * Ruby version
 2.7.3
 
+* Rails version
+6.1.4.1
 * Webpacker::Manifest::MissingEntryErrorがでた時の対処法
 以下のコマンドをSpotディレクリ下で実行してください。 
 
