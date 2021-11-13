@@ -6,6 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+2.7.3
 
 * System dependencies
 
@@ -27,4 +28,4 @@ Things you may want to cover:
 以下のコマンドをSpot下で実行してください。 
 rails webpacker:install
 rails webpacker:compile
-
+また、上記の方法で解決しない場合はnode.jsのバージョンが合っていない場合があります。
