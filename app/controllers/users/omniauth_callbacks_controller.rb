@@ -43,7 +43,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if @user.persisted?
         flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
         #sign_in_and_redirect @user, event: :authentication
-        sign_in(@user)
+        sign_in(:user, @user)
       else
         #不具合がFacebookとの間にあった場合。だって、persistedがfalseになることは基本ない。保存もされるし、削除もされていないことが圧倒的。
         session["devise.#{provider}_data"] = request.env['omniauth.auth']
