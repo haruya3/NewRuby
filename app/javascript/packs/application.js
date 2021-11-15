@@ -11,7 +11,4 @@ require("channels")
 require('jquery')
 require("test.js") 
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
 
