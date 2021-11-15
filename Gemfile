@@ -66,6 +66,7 @@ gem 'devise'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-line'
 
 gem "omniauth-rails_csrf_protection"
 

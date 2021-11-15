@@ -30,6 +30,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def facebook
       callback_from :facebook
     end
+
+    def line
+      callback_from :line
+    end
   
     private
     def callback_from(provider)
