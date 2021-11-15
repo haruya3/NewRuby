@@ -32,7 +32,7 @@
 
     <%- if devise_mapping.omniauthable? %>
       <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= link_to  omniauth_authorize_path(resource_name, provider), method: :post do %> 
+        <%= link_to  user_facebook_omniauth_authorize_path(resource_name, provider), method: :post do %> 
         <div class="start facebook-btn">
         <span class="fa fa-facebook "></span><%= "#{OmniAuth::Utils.camelize(provider)}でサイイン" %><br />
         </div>

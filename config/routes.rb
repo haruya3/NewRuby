@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   post '/posts/:post_id/likes' => 'like#create' 
   delete '/posts/:post_id/likes' => 'like#destroy' 
 
-
-
   root 'home#top'
   get 'home/priporicy', to: 'home#priporicy'
   get 'home/confirmable-wait', to: 'home#confirmable_wait'

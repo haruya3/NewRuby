@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-    before_action :user_get, only: [:show, :edit, :update]
+    before_action :user_get, only: [:show, :edit, :update, :destroy]
     before_action :autheticate_partial_user
     def show
 
@@ -18,6 +18,17 @@ class UserController < ApplicationController
             render :edit
         end
     end
+    
+    def destroy
+        if @user.destroy
+            flash[:notice] = "削除ができました"
+            sign_out(@user)
+            redirect_to root_path
+          else
+            flash[:alert] =  "削除に失敗しました"
+            render user_path(@user)
+        end
+    end
 
     private
     def user_params
@@ -29,7 +40,7 @@ class UserController < ApplicationController
     end
 
     def autheticate_partial_user
-        if @user.id != current_user.id
+        unless @user.id == current_user.id
             flash[:notice] = "権限がありません"
             redirect_to post_index_path
           end
