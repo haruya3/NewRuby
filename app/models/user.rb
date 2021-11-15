@@ -17,16 +17,20 @@ class User < ApplicationRecord
     user = User.where(uid: auth.uid, provider: auth.provider).first
       
     unless user
-      user = User.create(
+      user = User.new(
       uid:      auth.uid,
       provider: auth.provider,
       email:    auth.info.email,
       username: auth.info.name,
       password: Devise.friendly_token[0, 20]#開発者にも分からないようにランダムなパスワードが作られる。
       )
-      user.skip_confirmation!
-
+      if user.save
+        flash[:notice] = "アカウントが作成できました"
+      else
+        flash[:alert] = "アカウント作成に失敗しました"
+      end
     end
+    user.skip_confirmation!
     user
   end
 
