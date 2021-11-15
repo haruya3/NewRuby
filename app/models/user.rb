@@ -25,9 +25,9 @@ class User < ApplicationRecord
       password: Devise.friendly_token[0, 20]#開発者にも分からないようにランダムなパスワードが作られる。
       )
       if user.save
-        flash[:notice] = "アカウントが作成できました"
+        
       else
-        flash[:alert] = "アカウント作成に失敗しました"
+        redirect_to root_path
       end
     end
     user.skip_confirmation!
