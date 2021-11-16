@@ -28,12 +28,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super(scope)
   # end
     def facebook
-      raise request.env['omniauth.auth'].to_yaml
       callback_from :facebook
     end
 
     def line
-      raise request.env['omniauth.auth'].to_yaml
       callback_from :line
     end
   
