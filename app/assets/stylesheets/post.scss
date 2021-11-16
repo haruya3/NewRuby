@@ -2,23 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-@media (max-width: 670px){
-  .posts-index-item{
-    width: 75%;
-    padding: 20px, 30px;
-    margin-right: 30px;
-    background-color: rgb(250, 244, 244);
-    overflow: hidden;
-    box-shadow: 0 2px 6px #c1ced7;
-  }
-
-  .icon{
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-  }
-}
-
 .posts-index-item{
   padding: 20px 30px;
   background-color: rgb(250, 244, 244);
@@ -49,6 +32,12 @@
 
 }
 
+.user-name{
+  float: left;
+  margin-top: 23px;
+  margin-left: 7px;
+}
+
 .posts-show-item {
   padding: 30px;
   background-color: rgb(250, 244, 244);
@@ -58,6 +47,10 @@
 
 .post-item{
   clear: both;
+}
+
+.post-image{
+  width: 100%;
 }
 
 .post-item img{
@@ -94,6 +87,10 @@
 
 .like-btn-unlike {
   color: #ff2581;
+}
+
+.like-count{
+  margin-top: 20px;
 }
 
 .posts-show-item .fa {
@@ -147,5 +144,100 @@
 
 .fa{
    color: #ff2581;
+}
+
+
+@media (max-width: 670px){
+  .posts-index-item{
+    width: 80%;
+    padding: 20px, 30px;
+    margin-right: 30px;
+    background-color: rgb(250, 244, 244);
+    overflow: hidden;
+    box-shadow: 0 2px 6px #c1ced7;
+  }
+}
+@media (max-width: 670px){
+  .icon{
+    display: inline-block;
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+  }
+  
+}
+
+// タブ切り替え
+.tab {
+  float: left;
+  display: block;
+  width: 25%;
+  padding: 10px 20px; 
+  cursor: pointer;
+  border: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+
+
+
+.tab-header{
+  width: 100%;
+  height: 30%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.tab:first-child {
+  border-left: none;
+}
+// タブがactiveのときのデザイン
+.tab-active {
+  color: #FFF;
+  background: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+// タブの中身、最初は非表示
+.tabbox {
+  clear: both;
+  display: none;
+  padding: 15px;
+}
+
+.tabbox-contents{
+
+  margin-right: 30px;
+
+}
+
+// box-showクラスのものだけ表示
+.box-show {
+  display: block;
+}
+// hover時のアクション
+.tab:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 670px) {
+  .container {
+    width: 100%;
+    margin-right: 30px;
+    margin: 0px auto;
+    clear: both;
+  }
+
+  .tab {
+    float: left;
+    display: block;
+    width: 30%;
+    padding: 10px 20px; 
+    cursor: pointer;
+    border: solid 1px #CCC;
+    border-bottom: solid 1px #CCC;
+  }
+  
 }
 

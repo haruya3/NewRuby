@@ -7,5 +7,5 @@
   <%= link_to "/posts/#{post.id}/likes", method: :post, remote: true do %>
     <i class="far fa-heart fa-2x"></i>
   <% end %>
-  <p class="like-count"><%= post.likes.count %> いいね</p>
+  <br/><p class="like-count"><%= post.likes.count %> いいね</p>
 <% end %>

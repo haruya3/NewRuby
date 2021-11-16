@@ -6,7 +6,9 @@
             <% else %>
                 <%= link_to image_tag("/default.png", class: "user-icon" ), user_path(post.user) %>
             <% end %>
-            <p><%= link_to(post.user.username, user_path(post.user)) %></p>
+            <div class="user-name">
+              <%= link_to(post.user.username, user_path(post.user)) %>
+            </div>
         </div>
         <div class="post-down">
             <%= link_to post.content, post_path(post) %>
