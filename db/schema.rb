@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_051340) do
+ActiveRecord::Schema.define(version: 2021_11_16_094025) do
 
   create_table "janles", force: :cascade do |t|
     t.string "janle"
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 2021_11_15_051340) do
     t.string "unconfirmed_email"
     t.string "uid"
     t.string "provider"
+    t.string "profile"
+    t.string "openid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
