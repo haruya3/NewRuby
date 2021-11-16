@@ -28,6 +28,26 @@ body {
     text-align: center;
   }
   
+@media (max-width: 670px) {
+  .container {
+    width: 100%;
+    margin: 0px auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    clear: both;
+  }
+
+  .tab {
+    float: left;
+    width: 50%;
+    padding: 10px 20px; 
+    cursor: pointer;
+    border: solid 1px #CCC;
+    border-bottom: solid 1px #CCC;
+  }
+  
+
+}
         
 .container {
     max-width: 600px;
@@ -99,6 +119,8 @@ header {
   border: solid 1px #CCC;
   border-bottom: solid 1px #CCC;
 }
+
+
 
 
 .tab_list li{
