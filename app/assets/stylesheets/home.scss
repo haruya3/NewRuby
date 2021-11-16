@@ -19,6 +19,7 @@ ul, li {
 }
 
 
+
 body {
     color: #2d3133;
     background-color: #3ecdc6;
@@ -102,6 +103,14 @@ header {
   margin-left: 7px;
 }
 
+.button{
+  width: 80px;
+  height: 40px;
+  border-radius: 10%;
+  border-style: none;
+  color: black;
+  background-color:#3ecdc6;
+}
 
 // タブ切り替え
 .tab {
@@ -177,6 +186,15 @@ header {
     cursor: pointer;
     border: solid 1px #CCC;
     border-bottom: solid 1px #CCC;
+  }
+
+  .button{
+    width: 40px;
+    height: 25px;
+    border-radius: 10%;
+    border-style: none;
+    color: black;
+    background-color:#3ecdc6;
   }
 
 }

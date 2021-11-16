@@ -13,9 +13,9 @@
             </div>
           <% end %>
           <p>タイトル</p>
-          <%= f.text_field :title, class: "post-title", size: 30, value: @post.title %>
+          <%= f.text_field :title, class: "post-title", size: "30", value: @post.title %>
           <p>内容</p>
-          <%= f.text_area :content, class: "post-content    ", size: "30x10", value: @post.content %>
+          <%= f.text_area :content, class: "post-content", size: "30x20", value: @post.content %>
           <p>画像</p>
           <img src="<%="#{@post.post_image}" %>", class="icon"><br/>
           <%= f.label :post_image, class: "fa fa-file-picture-o fa-2x" do %> <br/>
@@ -28,7 +28,7 @@
           <p>映え: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "映え" %></p>
           <p>その他: <%= f.check_box :janle ,{ multiple: true, include_hidden: false }, "その他" %></p>
           <%= f.hidden_field :user_id, value: @post.user_id %>
-          <%= f.submit "更新" %>
+          <%= f.submit "更新", class: "button" %>
         </div>
       </div>
     <% end %>

@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
+
+.form input{
+  border-radius: 20%;
+  border: 1px solid aquamarine
+}
+
+.form textarea{
+  border-radius: 20%;
+  border: 1px solid aquamarine
+}
+
 .posts-index-item{
   padding: 20px 30px;
   background-color: rgb(250, 244, 244);
@@ -84,6 +96,10 @@
 .post-time {
   color: #8899a6;
   margin-bottom: 10px;
+}
+
+.form p{
+  margin: 3px;
 }
 
 .like-btn {
@@ -169,6 +185,16 @@
     height: 240px;
     object-fit: cover;
   }
+
+  .form input{
+    width: 50%;
+    height: auto;
+  }
+
+  .form textarea{
+    width: 50%;
+    height: auto;
+  }
   
 }
 
@@ -230,6 +256,7 @@
   .container {
     width: 100%;
     margin-right: 30px;
+    margin-left: 30px;
     margin: 0px auto;
     clear: both;
   }
@@ -243,6 +270,8 @@
     border: solid 1px #CCC;
     border-bottom: solid 1px #CCC;
   }
+
+ 
   
 }
 

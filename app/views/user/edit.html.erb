@@ -16,11 +16,11 @@
           <%= f.text_field :username, class: "user", value: @user.username %>
           <p>画像</p>
           <img src="<%="#{@user.user_image}" %>", class="user-icon"><br/>
-          <%= f.label :user_image, class: "user-image fa fa-file-picture-o fa-2x" do %> <br/>
+          <%= f.label :user_image, class: "user-image fa fa-file-picture-o fa-3x" do %> <br/>
           <%= f.file_field :user_image, style: "display: none;", accept: 'image/jpeg,image/gif,image/png' %><br/>
           <% end %>
           <div class="user-submit">
-            <%= f.submit "更新" %>
+            <%= f.submit "更新", class: "button" %>
           </div>
         </div>
       </div>
