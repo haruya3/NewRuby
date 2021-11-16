@@ -15,9 +15,8 @@ class User < ApplicationRecord
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
-    user.skip_confirmation!
     unless user
-      user = User.create(
+      user = User.new(
       uid:      auth.uid,
       provider: auth.provider,
       email:    User.dummy_email(auth),
@@ -25,6 +24,8 @@ class User < ApplicationRecord
       password: Devise.friendly_token[0, 20]#開発者にも分からないようにランダムなパスワードが作られる。
       )
     end
+    user.skip_confirmation!
+    user.save
     user
   end
 
