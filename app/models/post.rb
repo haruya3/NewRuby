@@ -41,7 +41,7 @@ class Post < ApplicationRecord
     when 'ドライブ'
       janle = Janle.find_by(janle: janle_name)
       posts = janle.posts.order(created_at: :desc)
-    when 'インスタ映え'
+    when '映え'
       janle = Janle.find_by(janle: janle_name)
       posts = janle.posts.order(created_at: :desc)
     when 'その他'

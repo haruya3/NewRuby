@@ -10,6 +10,6 @@ Janle.create([
     { janle: '遊び' },
     { janle: 'デート' },
     { janle: 'ドライブ'},
-    { janle: 'インスタ映え'},
+    { janle: '映え'},
     { janle: 'その他'}
     ])
