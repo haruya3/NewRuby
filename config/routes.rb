@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'home/priporicy', to: 'home#priporicy'
   get 'home/confirmable-wait', to: 'home#confirmable_wait'
+  get 'home/agree', to: 'home#agree'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
