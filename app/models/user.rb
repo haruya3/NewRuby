@@ -81,6 +81,8 @@ class User < ApplicationRecord
       http.request(request)
     end
 
+    raise response
+
     return response
   end
 
