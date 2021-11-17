@@ -1,3 +1,5 @@
+require 'uri'
+require 'net/http'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -14,19 +16,47 @@ class User < ApplicationRecord
   validates :username, {uniqueness: true, presence: true, length: {maximum: 15}}
 
   def self.find_for_oauth(auth)
+    id_token = User.get_id_token
     user = User.where(uid: auth.uid, provider: auth.provider).first
-    unless user
+    if user == nil
       user = User.new(
       uid:      auth.uid,
       provider: auth.provider,
-      email:    User.dummy_email(auth),
+      email:    id_token[0][:email],
       username: auth.info.name,
       password: Devise.friendly_token[0, 20]#開発者にも分からないようにランダムなパスワードが作られる。
+      )
+    elsif user.email == nil #userアカウント持っていて途中からsns認証使う場合
+      user = User.new(
+        uid: auth.uid,
+        provider: auth.provider
       )
     end
     user.skip_confirmation!
     user.save
     user
+  end
+
+  def self.get_id_token
+    uri = URI.parse("https://api.line.me/oauth2/v2.1/token")
+    request = Net::HTTP::Post.new(uri)
+    request.content_type = "application/x-www-form-urlencoded"
+    request.set_form_data(
+      "client_id" => "LINE_APP_ID",
+      "client_secret" => "LINE_APP_SECRET",
+      "code" => params[:code],
+      "grant_type" => "authorization_code",
+      "redirect_uri" => "https://spot-share-site.herokuapp.com//users/sign_up",
+    )
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+    return JWT.decode(JSON.parse(response.body)["id_token"],"#{client_secret}")
   end
 
   def self.dummy_email(auth)
