@@ -16,13 +16,16 @@ class User < ApplicationRecord
   validates :username, {uniqueness: true, presence: true, length: {maximum: 15}}
 
   def self.find_for_oauth(auth, code)
-    id_token = User.get_id_token(code)
+    id_token_payload_email = User.get_access_token(code)
+    unless id_token_payload_email #クライアントアプリにemail取得をユーザが許可していない場合
+      return id_token_payload_email = User.dummy_email(auth)
+    end
     user = User.where(uid: auth.uid, provider: auth.provider).first
     if user == nil
       user = User.new(
       uid:      auth.uid,
       provider: auth.provider,
-      email:    id_token[0][:email],
+      email:    id_token_payload_email,
       username: auth.info.name,
       password: Devise.friendly_token[0, 20]#開発者にも分からないようにランダムなパスワードが作られる。
       )
@@ -37,7 +40,7 @@ class User < ApplicationRecord
     user
   end
 
-  def self.get_id_token(code)
+  def self.get_access_token(code)
     uri = URI.parse("https://api.line.me/oauth2/v2.1/token")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
@@ -56,11 +59,33 @@ class User < ApplicationRecord
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
       http.request(request)
     end
-    return JWT.decode(JSON.parse(response.body)["id_token"], ENV[LINE_APP_SECRET])
+    id_token = JSON.parse(response.body)["id_token"]
+    id_token_payload = get_id_token(id_token)
+    return id_token_payload[:email]
+  end
+
+  def get_id_token(id_token)
+    uri = URI.parse("https://api.line.me/oauth2/v2.1/verify")
+    request = Net::HTTP::Post.new(uri)
+    request.content_type = "application/x-www-form-urlencoded"
+    request.set_form_data(
+      client_id: ENV["LINE_APP_ID"],
+      id_token: id_token
+    )
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+
+    return response
   end
 
   def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
+    return "#{auth.uid}-#{auth.provider}@example.com"
   end
 
 end
