@@ -60,11 +60,11 @@ class User < ApplicationRecord
       http.request(request)
     end
     id_token = JSON.parse(response.body)["id_token"]
-    id_token_payload = get_id_token(id_token)
+    id_token_payload = User.get_id_token(id_token)
     return id_token_payload[:email]
   end
 
-  def get_id_token(id_token)
+  def self.get_id_token(id_token)
     uri = URI.parse("https://api.line.me/oauth2/v2.1/verify")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
