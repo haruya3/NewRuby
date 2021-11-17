@@ -42,8 +42,8 @@ class User < ApplicationRecord
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
     request.set_form_data(
-      "client_id" => "LINE_APP_ID",
-      "client_secret" => "LINE_APP_SECRET",
+      "client_id" => ENV["LINE_APP_ID"],
+      "client_secret" => ENV["LINE_APP_SECRET"],
       "code" => "#{code}",
       "grant_type" => "authorization_code",
       "redirect_uri" => "https://spot-share-site.herokuapp.com//users/sign_up",
@@ -56,7 +56,7 @@ class User < ApplicationRecord
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
       http.request(request)
     end
-    return JWT.decode(JSON.parse(response.body)["id_token"],"#{client_secret}")
+    return JWT.decode(JSON.parse(response.body)["id_token"], ENV[LINE_APP_ID])
   end
 
   def self.dummy_email(auth)
