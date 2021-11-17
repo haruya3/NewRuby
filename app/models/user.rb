@@ -60,6 +60,7 @@ class User < ApplicationRecord
       http.request(request)
     end
     id_token = JSON.parse(response.body)["id_token"]
+    puts id_token
     id_token_payload = User.get_id_token(id_token)
     return id_token_payload[:email]
   end
@@ -81,7 +82,7 @@ class User < ApplicationRecord
       http.request(request)
     end
 
-    raise response
+    puts response
 
     return response
   end
