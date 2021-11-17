@@ -56,7 +56,7 @@ class User < ApplicationRecord
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
       http.request(request)
     end
-    return JWT.decode(JSON.parse(response.body)["id_token"], ENV[LINE_APP_ID])
+    return JWT.decode(JSON.parse(response.body)["id_token"], ENV[LINE_APP_SECRET])
   end
 
   def self.dummy_email(auth)
