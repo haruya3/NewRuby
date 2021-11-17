@@ -15,8 +15,8 @@ class User < ApplicationRecord
 
   validates :username, {uniqueness: true, presence: true, length: {maximum: 15}}
 
-  def self.find_for_oauth(auth)
-    id_token = User.get_id_token
+  def self.find_for_oauth(auth, code)
+    id_token = User.get_id_token(code)
     user = User.where(uid: auth.uid, provider: auth.provider).first
     if user == nil
       user = User.new(
@@ -37,14 +37,14 @@ class User < ApplicationRecord
     user
   end
 
-  def self.get_id_token
+  def self.get_id_token(code)
     uri = URI.parse("https://api.line.me/oauth2/v2.1/token")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
     request.set_form_data(
       "client_id" => "LINE_APP_ID",
       "client_secret" => "LINE_APP_SECRET",
-      "code" => params[:code],
+      "code" => "#{code}",
       "grant_type" => "authorization_code",
       "redirect_uri" => "https://spot-share-site.herokuapp.com//users/sign_up",
     )
