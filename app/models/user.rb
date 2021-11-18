@@ -53,7 +53,7 @@ class User < ApplicationRecord
     )
 
     req_options = {
-      use_ssl: uri.scheme == "https",
+      use_ssl: uri.scheme == "https"
     }
 
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
@@ -75,7 +75,7 @@ class User < ApplicationRecord
     )
 
     req_options = {
-      use_ssl: uri.scheme == "https",
+      use_ssl: uri.scheme == "https"
     }
 
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
