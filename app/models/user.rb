@@ -47,7 +47,7 @@ class User < ApplicationRecord
     request.set_form_data(
       client_id: ENV["LINE_APP_ID"],
       client_secret: ENV["LINE_APP_SECRET"],
-      code: "#{code}",
+      code: code,
       grant_type: "authorization_code",
       redirect_uri: "https://spot-share-site.herokuapp.com//users/sign_up"
     )
