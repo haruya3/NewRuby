@@ -329,6 +329,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-line
+  omniauth-oauth2
   omniauth-rails_csrf_protection
   pg
   pry-rails

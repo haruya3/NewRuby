@@ -68,6 +68,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-line'
 
+gem 'omniauth-oauth2'
+
 gem "omniauth-rails_csrf_protection"
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
