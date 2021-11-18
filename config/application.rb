@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Spot
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.autoload_paths += %W(#{config.root}/lib/omniauth/strategies)
     config.load_defaults 6.1
 
     config.i18n.default_locale = :ja
