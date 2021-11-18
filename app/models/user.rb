@@ -29,7 +29,7 @@ class User < ApplicationRecord
       username: auth.info.name,
       password: Devise.friendly_token[0, 20]#開発者にも分からないようにランダムなパスワードが作られる。
       )
-    elsif user.email == nil #userアカウント持っていて途中からsns認証使う場合
+    elsif user.provider == nil #userアカウント持っていて途中からsns認証使う場合
       user = User.new(
         uid: auth.uid,
         provider: auth.provider
@@ -41,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def self.get_access_token(code)
-    uri = URI.parse("https://api.line.me/oauth2/v2.1/token")
+    uri = URI.parse("https://api.line.me/oauth2/v2.1/token")#アクセストークン取得。この際に、同じハッシュにid_tokenも含まれる
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
     request.set_form_data(
@@ -49,7 +49,7 @@ class User < ApplicationRecord
       "client_secret" => ENV["LINE_APP_SECRET"],
       "code" => "#{code}",
       "grant_type" => "authorization_code",
-      "redirect_uri" => "https://spot-share-site.herokuapp.com//users/sign_up",
+      "redirect_uri" => "https://spot-share-site.herokuapp.com//users/sign_up"
     )
 
     req_options = {
@@ -66,7 +66,7 @@ class User < ApplicationRecord
   end
 
   def self.get_id_token(id_token)
-    uri = URI.parse("https://api.line.me/oauth2/v2.1/verify")
+    uri = URI.parse("https://api.line.me/oauth2/v2.1/verify") #id_tokenの中身を取得(ペイロード部)
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
     request.set_form_data(
