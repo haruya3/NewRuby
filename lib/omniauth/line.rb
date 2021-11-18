@@ -22,6 +22,7 @@ module OmniAuth
       info do
         {
           user_id:     raw_info[:sub],
+          name:        raw_info[:name],
           email:       raw_info[:email],
           picture_url: raw_info[:picture]
         }
@@ -50,7 +51,7 @@ module OmniAuth
         @id_token_payload ||= client.request(:post, 'https://api.line.me/oauth2/v2.1/verify',
           {
             body: {
-              id_token:  access_token['id_token'],
+              id_token:  access_token[:id_token],
               client_id: options.client_id,
               nonce:     session.delete("omniauth.nonce")
             }
