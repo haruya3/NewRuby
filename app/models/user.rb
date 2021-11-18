@@ -45,11 +45,11 @@ class User < ApplicationRecord
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
     request.set_form_data(
-      "client_id" => ENV["LINE_APP_ID"],
-      "client_secret" => ENV["LINE_APP_SECRET"],
-      "code" => "#{code}",
-      "grant_type" => "authorization_code",
-      "redirect_uri" => "https://spot-share-site.herokuapp.com//users/sign_up"
+      client_id: ENV["LINE_APP_ID"],
+      client_secret: ENV["LINE_APP_SECRET"],
+      code: "#{code}",
+      grant_type: "authorization_code",
+      redirect_uri: "https://spot-share-site.herokuapp.com//users/sign_up"
     )
 
     req_options = {
@@ -71,7 +71,7 @@ class User < ApplicationRecord
     request.content_type = "application/x-www-form-urlencoded"
     request.set_form_data(
       client_id: ENV["LINE_APP_ID"],
-      id_token: id_token
+      id_token: "#{id_token}"
     )
 
     req_options = {
