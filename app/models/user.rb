@@ -71,7 +71,7 @@ class User < ApplicationRecord
     request.content_type = "application/x-www-form-urlencoded"
     request.set_form_data(
       client_id: ENV["LINE_APP_ID"],
-      id_token: "#{id_token}"
+      id_token: id_token
     )
 
     req_options = {
