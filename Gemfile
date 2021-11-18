@@ -85,3 +85,5 @@ gem 'pry-rails'
 gem 'font-awesome-sass'
 
 gem 'fog-aws'
+
+gem 'rails_12factor', '~> 0.0.3', group: :production
