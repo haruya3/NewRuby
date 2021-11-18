@@ -35,12 +35,12 @@ module OmniAuth
       private
 
       # nonceをリクエストパラメータに追加するためoverride
-      def authorize_params
-        super.tap do |params|
-          params[:nonce] = SecureRandom.uuid
-          session["omniauth.nonce"] = params[:nonce]
-        end
-      end
+      #def authorize_params
+        #super.tap do |params|
+          #params[:nonce] = SecureRandom.uuid
+          #session["omniauth.nonce"] = params[:nonce]
+        #end
+      #end
 
       def callback_url
         full_host + script_name + callback_path
@@ -51,9 +51,9 @@ module OmniAuth
         @id_token_payload ||= client.request(:post, 'https://api.line.me/oauth2/v2.1/verify',
           {
             body: {
-              id_token:  access_token.id_token,
+              id_token:  access_token[:id_token],
               client_id: options.client_id,
-              nonce:     session.delete("omniauth.nonce")
+             # nonce:     session.delete("omniauth.nonce")
             }
           }
         ).parsed
