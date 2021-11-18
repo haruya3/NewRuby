@@ -16,14 +16,14 @@ module OmniAuth
       }
 
       uid do
-        raw_info['userId']
+        raw_info[:userId]
       end
 
       info do
         {
-          'user_id'     => raw_info['sub'],
-          'email'       => raw_info['email'],
-          'picture_url' => raw_info['picture']
+          user_id:     raw_info[:sub],
+          email:       raw_info[:email],
+          picture_url: raw_info[:picture]
         }
       end
 
@@ -41,6 +41,9 @@ module OmniAuth
         end
       end
 
+      def callback_url
+        full_host + script_name + callback_path
+      end
 
       ##omniauth-line, 
       def verify_id_token #a ||= はaが値があればなにもせず、偽ならば代入するというもの。よく、初期化で使われる。
