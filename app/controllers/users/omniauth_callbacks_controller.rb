@@ -32,7 +32,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def line
-      raise request.env['omniauth.auth'].to_yml
       callback_from :line
     end
   

@@ -23,7 +23,7 @@ module OmniAuth
         {
           'user_id'     => raw_info['sub'],
           'email'       => raw_info['email'],
-          'picture_url' => raw_info['picture'],
+          'picture_url' => raw_info['picture']
         }
       end
 
