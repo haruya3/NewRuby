@@ -60,6 +60,9 @@ module OmniAuth
         #parseでリクエスト内容を読み込んでいるというのが俺の最大の理解。
         logger.debug @id_token_payload
         Rails.application.config.ohter_logger.debug @id_token_payload
+        puts @id_token_payload
+      rescue => e 
+        p e.message #=> error
         @id_token_payload
       end
     end
