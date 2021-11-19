@@ -11,8 +11,8 @@ module OmniAuth
 
       option :client_options, {
         site:          'https://api.line.me',
-        authorize_url: 'https://access.line.me/oauth2/v2.1/authorize',
-        token_url:     'https://api.line.me/oauth2/v2.1/token'
+        authorize_url: '/oauth2/v2.1/authorize',
+        token_url:     '/oauth2/v2.1/token'
       }
 
       uid do
@@ -32,7 +32,7 @@ module OmniAuth
         @raw_info ||= verify_id_token
       end
 
-      private
+      #private
 
       # nonceをリクエストパラメータに追加するためoverride
       #def authorize_params
@@ -52,7 +52,7 @@ module OmniAuth
           {
             body: {
               id_token:  access_token[:id_token],
-              client_id: options.client_id,
+              client_id: options.client_id
              # nonce:     session.delete("omniauth.nonce")
             }
           }
