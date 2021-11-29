@@ -21,7 +21,7 @@ class User < ApplicationRecord
       user = User.new(
       uid:      auth.uid,
       provider: auth.provider,
-      email:    auth.info.email || User.dummy_email,
+      email:    auth.info.email || User.dummy_email(auth),
       username: auth.info.name,
       password: Devise.friendly_token[0, 20]#開発者にも分からないようにランダムなパスワードが作られる。
       )
