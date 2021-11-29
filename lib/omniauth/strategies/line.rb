@@ -32,15 +32,15 @@ module OmniAuth
         @raw_info ||= verify_id_token
       end
 
-      #private
+      private
 
       # nonceをリクエストパラメータに追加するためoverride
-      #def authorize_params
-        #super.tap do |params|
-          #params[:nonce] = SecureRandom.uuid
-          #session["omniauth.nonce"] = params[:nonce]
-        #end
-      #end
+      def authorize_params
+        super.tap do |params|
+          params[:nonce] = SecureRandom.uuid
+          session["omniauth.nonce"] = params[:nonce]
+        end
+      end
 
       def callback_url
         full_host + script_name + callback_path
@@ -53,14 +53,11 @@ module OmniAuth
             body: {
               id_token:  access_token[:id_token],
               client_id: options.client_id
-             # nonce:     session.delete("omniauth.nonce")
+              nonce:     session.delete("omniauth.nonce")
             }
           }
         ).parsed
         #parseでリクエスト内容を読み込んでいるというのが俺の最大の理解。
-        logger.debug @id_token_payload
-        Rails.application.config.ohter_logger.debug @id_token_payload
-        puts @id_token_payload
       rescue => e 
         p e.message #=> error
         @id_token_payload

@@ -32,6 +32,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def line
+      logger.debug request.env['omniauth.auth']
       callback_from :line
     end
   
