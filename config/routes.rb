@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :post 
   post '/posts/:post_id/likes' => 'like#create' 
   delete '/posts/:post_id/likes' => 'like#destroy' 
- # get '/users/auth/line/callback'=> 'omniauth_callbacks#line'
+  #post '/auth/line/callback'=> 'omniauth_callbacks#line'
   root 'home#top'
   get 'home/priporicy', to: 'home#priporicy'
   get 'home/confirmable-wait', to: 'home#confirmable_wait'

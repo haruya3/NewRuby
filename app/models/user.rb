@@ -22,6 +22,7 @@ class User < ApplicationRecord
       uid:      auth.uid,
       provider: auth.provider,
       email:    auth.info.email || User.dummy_email(auth),
+      user_image: auth.image,
       username: auth.info.name,
       password: Devise.friendly_token[0, 20]#開発者にも分からないようにランダムなパスワードが作られる。
       )
