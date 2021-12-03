@@ -9,6 +9,6 @@ require("@rails/activestorage").start()
 require("channels")
 // 追記
 require('jquery')
-require("test.js") 
-
+require("tab.js") 
+require("slider.js")
 
