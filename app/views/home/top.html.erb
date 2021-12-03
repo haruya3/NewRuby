@@ -1,9 +1,11 @@
 <div class="main top-main">
   <div class="container">
     <div class="content">
-      <div class="introduction"><img class="image" src="/introduction.png"></div>
-      <div class="introduction"><img class="image" src="/introduction2.png"></div>
-      <div class="introduction"><img class="image" src="/introduction3.png"></div>
+      <% @object_urls.each do |url|%>
+        <div class="introduction">
+          <img class="image" src="<%= url %>">
+        </div>
+      <% end %>
     </div>
     <p>みんなに自分のお気に入りのSpotを共有しよう!</p>
     <div class="sign up">

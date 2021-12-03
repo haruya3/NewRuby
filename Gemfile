@@ -87,3 +87,5 @@ gem 'font-awesome-sass'
 gem 'fog-aws'
 
 gem 'rails_12factor', '~> 0.0.3', group: :production
+
+gem 'aws-sdk', '~> 3.1'
